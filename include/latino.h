@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #ifndef _LATINO_H_
@@ -51,7 +32,7 @@ THE SOFTWARE.
 /** Version mayor de Latino */
 #define LAT_VERSION_MAYOR "1"
 /** Version menor de Latino */
-#define LAT_VERSION_MENOR "0"
+#define LAT_VERSION_MENOR "1"
 /** Version de correcion de errores */
 #define LAT_VERSION_PARCHE "0"
 /** Version de Latino */
@@ -79,10 +60,9 @@ extern int debug;
 /** Indica que el parser no debe de devolver errores, se usa para REPL */
 extern int parse_silent;
 
-// generado en
-// http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=latino
-/**
- Dibuja el logo
+/* generado en:
+http://www.patorjk.com/software/taag/#p=display&f=Graffiti&t=latino
+Dibuja el logo
  */
 #define LAT_LOGO                                                               \
     "\n.__          __  .__               \n|  | _____ _/  |_|__| ____   "     \
@@ -114,8 +94,9 @@ extern int parse_silent;
 #define MAX_STR_INTERN 64
 /** Tamanio maximo de una cadena almacenada dinamicamente*/
 #define MAX_STR_LENGTH (1024 * 1024)
+/** Tamanio minimo del arreglo de frames */
+#define MIN_FRAME_SIZE 8
 /** Tamanio maximo de la pila de la maquina virtual */
-//#define MAX_STACK_SIZE (1024 * 8)
 #define MAX_STACK_SIZE (1024 * 8)
 /** Tamanio maximo de una ruta de derectorio */
 #define MAX_PATH_LENGTH 1024
@@ -157,7 +138,6 @@ extern int parse_silent;
 
 /* maquina virutal */
 typedef struct lat_mv lat_mv;
-// typedef struct lat_objeto lat_objeto;
 typedef struct lat_funcion lat_funcion;
 
 typedef void (*lat_CFuncion)(lat_mv *mv);
@@ -177,8 +157,10 @@ LATINO_API void latC_destruir_mv(lat_mv *mv);
 LATINO_API lat_objeto *latC_desapilar(lat_mv *mv);
 LATINO_API void latC_apilar(lat_mv *mv, lat_objeto *o);
 LATINO_API lat_objeto *latC_tope(lat_mv *mv);
-LATINO_API void latC_apilar_string(lat_mv *mv, const char *str);
+LATINO_API void latC_apilar_null(lat_mv *mv);
+LATINO_API void latC_apilar_bool(lat_mv *mv, bool b);
 LATINO_API void latC_apilar_double(lat_mv *mv, double num);
+LATINO_API void latC_apilar_string(lat_mv *mv, const char *str);
 
 /* funciones para el manejo de errores y llamado de funciones */
 LATINO_API lat_objeto *latC_analizar(lat_mv *mv, ast *nodo);
@@ -186,7 +168,7 @@ LATINO_API int latC_llamar_funcion(lat_mv *mv, lat_objeto *func);
 LATINO_API void latC_error(lat_mv *mv, const char *fmt, ...);
 
 /* funciones para crear un objeto latino */
-LATINO_API lat_objeto *latC_crear_logico(lat_mv *mv, bool val);
+// LATINO_API lat_objeto *latC_crear_logico(lat_mv *mv, bool val);
 LATINO_API lat_objeto *latC_crear_numerico(lat_mv *mv, double val);
 LATINO_API lat_objeto *latC_crear_cadena(lat_mv *mv, const char *val);
 LATINO_API lat_objeto *latC_crear_lista(lat_mv *mv, lista *l);
@@ -240,5 +222,23 @@ LATINO_API hash_map *latH_clonar(lat_mv *mv, hash_map *m);
 LATINO_API void latC_abrir_liblatino(lat_mv *mv, const char *nombre_lib,
                                      const lat_CReg *funs);
 LATINO_API int latC_cargarlib(lat_mv *mv, const char *path, const char *sym);
+
+/* funciones comunes */
+char *tipo(int tipo);
+char *analizar_fmt(const char *s, size_t len);
+char *analizar(const char *s, size_t len);
+char *decimal_acadena(double d);
+char *logico_acadena(int i);
+bool inicia_con(const char *base, const char *str);
+bool termina_con(char *base, char *str);
+int ultima_pos(char *base, char *str);
+char *insertar(char *dest, char *src, int pos);
+char *rellenar_izquierda(char *base, char *c, int n);
+char *rellenar_derecha(char *base, char *c, int n);
+char *reemplazar(char *o_string, char *s_string, char *r_string);
+char *subcadena(const char *str, int beg, int n);
+char *minusculas(const char *str);
+char *mayusculas(const char *str);
+char *quitar_espacios(const char *str);
 
 #endif /* _LATINO_H_ */

@@ -1,33 +1,15 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
-#include "latgc.h"
 #include "latino.h"
 #include "latlist.h"
 #include "latmem.h"
 #include "latmv.h"
 #include "latobj.h"
+
+#include "latgc.h"
 
 #define LIB_GC_NAME "gc"
 
@@ -53,8 +35,8 @@ void gc_paso(lat_mv *mv) {
             if (tmp != NULL) {
                 if (tmp->marca && tmp->nref <= 0) {
                     // if
-                    // (!latL_contiene_valor(mv, latC_checar_lista(mv, mv->pila),
-                    // tmp)) {
+                    // (!latL_contiene_valor(mv, latC_checar_lista(mv,
+                    // mv->pila), tmp)) {
                     if (mv->memoria_usada > (MAX_VIRTUAL_MEMORY * 0.0001)) {
                         /*printf("collectando
                         objeto:\t");
@@ -100,6 +82,7 @@ void gc_checar(lat_mv *mv) {
 }
 
 static void gc_mostrar(lat_mv *mv) {
+    UNUSED(mv);
     // lat_objeto *go = mv->global->gc_objetos;
     // printf("%s (%i) :\n", "GC contiene ", latL_longitud(latC_checar_lista(mv,
     // go)));
@@ -108,6 +91,8 @@ static void gc_mostrar(lat_mv *mv) {
 }
 
 static const lat_CReg libgc[] = {
-    {"mostrar", gc_mostrar, 0}, {"limpiar", gc_checar, 0}, {NULL, NULL}};
+    {"mostrar", gc_mostrar, 0}, {"limpiar", gc_checar, 0}, {NULL, NULL, 0}};
 
-void latC_abrir_liblatino_gc(lat_mv *mv) { latC_abrir_liblatino(mv, LIB_GC_NAME, libgc); }
+void latC_abrir_liblatino_gc(lat_mv *mv) {
+    latC_abrir_liblatino(mv, LIB_GC_NAME, libgc);
+}

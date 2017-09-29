@@ -1,3 +1,21 @@
+funcion fibo_rec(n)
+    si ( n < 2 )
+        retorno n
+    fin
+    retorno fibo_rec(n-1) + fibo_rec(n-2)
+fin
+
+poner(fibo_rec(20))
+/*
+funcion fibo_rec(n)
+    si ( n < 2 )
+        retorno n
+    fin
+    retorno fibo_rec(n-1) + fibo_rec(n-2)
+fin
+
+poner(fibo_rec(6))
+
 funcion fibo_iter(n)
     si ( n < 2 )
         retorno n
@@ -17,16 +35,6 @@ fin
 res = "fibo_iter: "
 res ..= fibo_iter(8)
 poner(res)
-/*
-funcion fibo_rec(n)
-    si ( n < 2 )
-        retorno n
-    fin
-    retorno fibo_rec(n-1) + fibo_rec(n-2)
-fin
-
-poner(fibo_rec(6))
-
 
 fun fret (a, b)
   ret a+b

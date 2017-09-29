@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #include "latino.h"
@@ -28,19 +9,22 @@ THE SOFTWARE.
 
 static void mate_acos(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, acos(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, acos(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
 static void mate_asin(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, asin(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, asin(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
 static void mate_atan(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, atan(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, atan(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
@@ -52,7 +36,8 @@ static void mate_cos(lat_mv *mv) {
 
 static void mate_cosh(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, cosh(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, cosh(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
@@ -64,7 +49,8 @@ static void mate_sin(lat_mv *mv) {
 
 static void mate_sinh(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, sinh(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, sinh(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
@@ -76,7 +62,8 @@ static void mate_tan(lat_mv *mv) {
 
 static void mate_tanh(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, tanh(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, tanh(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
@@ -101,13 +88,15 @@ static void mate_log10(lat_mv *mv) {
 
 static void mate_sqrt(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, sqrt(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, sqrt(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
 static void mate_ceil(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, ceil(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, ceil(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
@@ -120,7 +109,8 @@ static void mate_floor(lat_mv *mv) {
 
 static void mate_abs(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
-    lat_objeto *tmp = latC_crear_numerico(mv, fabs(latC_checar_numerico(mv, a)));
+    lat_objeto *tmp =
+        latC_crear_numerico(mv, fabs(latC_checar_numerico(mv, a)));
     latC_apilar(mv, tmp);
 }
 
@@ -187,7 +177,7 @@ static const lat_CReg libmate_[] = {
     {"piso", mate_floor, 1},       {"abs", mate_abs, 1},
     {"atan2", mate_atan2, 2},      {"pot", mate_pow, 2},
     {"frexp", mate_frexp, 2},      {"ldexp", mate_ldexp, 2},
-    {"aleatorio", mate_random, 2}, {NULL, NULL}};
+    {"aleatorio", mate_random, 2}, {NULL, NULL, 0}};
 
 void latC_abrir_liblatino_mathlib(lat_mv *mv) {
     latC_abrir_liblatino(mv, LIB_MATE_NAME, libmate_);

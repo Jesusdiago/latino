@@ -4,12 +4,13 @@ EXPORTS
   latC_desapilar
   latC_apilar
   latC_tope
-  latC_apilar_string
+  latC_apilar_null
+  latC_apilar_bool
   latC_apilar_double
+  latC_apilar_string
   latC_error
   latC_llamar_funcion
   latC_analizar
-  latC_crear_logico
   latC_crear_numerico
   latC_crear_cadena
   latC_crear_lista

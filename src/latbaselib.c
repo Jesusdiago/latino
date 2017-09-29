@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #include <stdbool.h>
@@ -31,9 +12,6 @@ THE SOFTWARE.
 
 #define LIB_BASE_NAME ""
 
-char *analizar_fmt(const char *s, size_t len);
-char *analizar(const char *s, size_t len);
-
 static bool eslegible(const char *archivo) {
     FILE *f = fopen(archivo, "r");
     if (f == NULL) {
@@ -41,38 +19,6 @@ static bool eslegible(const char *archivo) {
     }
     fclose(f);
     return true;
-}
-
-char *tipo(int tipo) {
-    switch (tipo) {
-        case T_NULL:
-            return "nulo";
-            break;
-        case T_BOOL:
-            return "logico";
-            break;
-        case T_NUMERIC:
-            return "decimal";
-            break;
-        case T_STR:
-            return "cadena";
-            break;
-        case T_LIST:
-            return "lista";
-            break;
-        case T_DIC:
-            return "diccionario";
-            break;
-        case T_FUN:
-            return "fun";
-            break;
-        case T_CFUN:
-            return "cfun";
-            break;
-        default:
-            return "indefinido";
-            break;
-    }
 }
 
 void base_poner(lat_mv *mv) {
@@ -89,10 +35,8 @@ void base_imprimirf(lat_mv *mv) {
     latO_imprimir(mv, str, true);
 }
 
-int ultima_pos(char *base, char *str);
-char *subcadena(const char *str, int beg, int n);
-
 static void base_incluir(lat_mv *mv) {
+    // FIXME: Validar que no se incluya a si mismo el archivo
     lat_objeto *o = latC_desapilar(mv);
     char *libname = latC_checar_cadena(mv, o);
     int status;
@@ -201,7 +145,10 @@ static void base_leer(lat_mv *mv) {
     }
 }
 
-static void base_limpiar(lat_mv *mv) { system(latC_clear); }
+static void base_limpiar(lat_mv *mv) {
+    UNUSED(mv);
+    system(latC_clear);
+}
 
 static void base_tipo(lat_mv *mv) {
     lat_objeto *a = latC_desapilar(mv);
@@ -252,7 +199,7 @@ static const lat_CReg libbase[] = {
     {"tipo", base_tipo, 1},
     {"imprimirf", base_imprimirf, FUNCION_VAR_ARGS},
     {"error", base_error, FUNCION_VAR_ARGS},
-    {NULL, NULL}};
+    {NULL, NULL, 0}};
 
 void latC_abrir_liblatino_baselib(lat_mv *mv) {
     latC_abrir_liblatino(mv, LIB_BASE_NAME, libbase);

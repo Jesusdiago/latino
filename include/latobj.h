@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #ifndef _LATINO_OBJ_H_
@@ -31,13 +12,6 @@ THE SOFTWARE.
 #include "latino.h"
 
 typedef unsigned char lat_byte;
-
-/*
-#include "latdic.h"
-#include "latlist.h"
-
-typedef struct lat_mv lat_mv;
-*/
 
 /** \file object.h
  *
@@ -59,20 +33,18 @@ typedef struct lat_mv lat_mv;
  * Tipo de dato que maneja la maquina virtual
  */
 typedef enum lat_tipo {
-    T_NULL, // 0
+    T_NULL, /* 0 */
     T_BOOL,
     T_NUMERIC,
     T_STR,
     T_CONTEXT,
-    T_LIST, // 5
+    T_LIST, /* 5 */
     T_DIC,
     T_FUN,
     T_CFUN,
     T_CPTR,
-    T_CLASS, // 10
+    T_CLASS, /* 10 */
 } lat_tipo;
-
-// typedef struct lat_objeto lat_objeto;
 
 typedef void (*lat_CFuncion)(lat_mv *mv);
 
@@ -139,7 +111,7 @@ typedef struct _lat_objeto {
     bool es_vararg;
 } lat_objeto;
 
-/**\brief Define una fun de usuario */
+/**\brief Define una funcion de usuario */
 typedef struct lat_funcion {
     int nparams;
     int ninst;
@@ -155,7 +127,7 @@ lat_objeto latO_verdadero_;
 lat_objeto latO_falso_;
 
 /* macros para asignar valores */
-#define setNulo(obj, v)                                                        \
+#define setNulo(obj)                                                           \
     { (obj)->tipo = T_NULL; }
 #define setLogico(obj, v)                                                      \
     {                                                                          \
@@ -232,26 +204,26 @@ lat_objeto latO_falso_;
         const lat_objeto *oo2 = (obj2);                                        \
         lat_objeto *oo1 = (obj1);                                              \
         switch (getTipo(oo2)) {                                                \
-            case T_NULL:                                                       \
-                setNulo(oo1, NULL);                                            \
-                break;                                                         \
-            case T_BOOL:                                                       \
-                setLogico(oo1, getLogico(oo2));                                \
-                break;                                                         \
-            case T_NUMERIC:                                                    \
-                setNumerico(oo1, getNumerico(oo2));                            \
-                break;                                                         \
-            case T_STR:                                                        \
-            case T_LIST:                                                       \
-            case T_DIC:                                                        \
-            case T_CONTEXT:                                                    \
-            case T_FUN:                                                        \
-            case T_CFUN:                                                       \
-            case T_CPTR:                                                       \
-                setobj(oo1, oo2);                                              \
-                break;                                                         \
-            default:                                                           \
-                break;                                                         \
+        case T_NULL:                                                           \
+            setNulo(oo1);                                                      \
+            break;                                                             \
+        case T_BOOL:                                                           \
+            setLogico(oo1, getLogico(oo2));                                    \
+            break;                                                             \
+        case T_NUMERIC:                                                        \
+            setNumerico(oo1, getNumerico(oo2));                                \
+            break;                                                             \
+        case T_STR:                                                            \
+        case T_LIST:                                                           \
+        case T_DIC:                                                            \
+        case T_CONTEXT:                                                        \
+        case T_FUN:                                                            \
+        case T_CFUN:                                                           \
+        case T_CPTR:                                                           \
+            setobj(oo1, oo2);                                                  \
+            break;                                                             \
+        default:                                                               \
+            break;                                                             \
         }                                                                      \
     }
 
@@ -296,8 +268,6 @@ lat_objeto *latO_crear_cfuncion(lat_mv *mv);
 void latL_modificar_elemento(lat_mv *mv, lista *list, void *data, int pos);
 int latL_comparar(lat_mv *mv, lista *lhs, lista *rhs);
 int latL_obtener_indice(lat_mv *mv, lista *list, void *data);
-
-// lat_cadena *latO_cadenaNueva(lat_mv *mv, const char *str, size_t len);
 void latS_resize(lat_mv *mv, int newsize);
 
-#endif // !_LATINO_OBJ_H_
+#endif /* !_LATINO_OBJ_H_ */

@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #ifndef _LATINO_MV_H_
@@ -68,7 +49,7 @@ typedef void (*lat_CFuncion)(lat_mv *mv);
 #define STORE_NAME 22
 #define JUMP_ABSOLUTE 23
 #define POP_JUMP_IF_FALSE 24
-#define POP_JUMP_IF_TRUE 25 // Unused
+#define POP_JUMP_IF_TRUE 25 /* No se usa */
 #define PUSH_CTX 26
 #define POP_CTX 27
 #define CALL_FUNCTION 28
@@ -85,8 +66,8 @@ typedef void (*lat_CFuncion)(lat_mv *mv);
 #define OP_REGEX 39
 #define BINARY_POW 40
 #define OP_VAR_ARGS 41
-#define OP_PUSH 42 // Unused
-#define OP_POP 43  // Unused
+#define OP_PUSH 42 /* No se usa */
+#define OP_POP 43  /* No se usa */
 #define ADJUST_STACK 44
 #define LOAD_VAR_ARGS 45
 #define SET_LOCAL 46
@@ -102,6 +83,7 @@ union lat_gcobjeto {
 };
 
 typedef struct lat_proto {
+    lat_commonheader;
     int nparams;
     int ninst;
     char *nombre;
@@ -125,8 +107,15 @@ typedef struct lat_global {
     bool REPL;
 } lat_global;
 
+typedef struct lat_frame {
+    lat_objeto *base;
+    lat_objeto *func;
+    lat_objeto *top;
+    int nresults;
+} lat_frame;
+
 /**\brief Define la maquina virtual (MV) */
-typedef struct lat_mv {
+/*typedef struct lat_mv {
     lat_global *global;
     lat_objeto *pila;
     lat_objeto *tope;
@@ -134,6 +123,8 @@ typedef struct lat_mv {
     lat_objeto *actfun;
     lat_objeto *contexto[256];
     lat_objeto *contexto_actual;
+    lat_frame *end_frm;
+    lat_frame *base_frm;
     int ptrctx;
     int ptrpila;
     int ptrprevio;
@@ -145,6 +136,34 @@ typedef struct lat_mv {
     int nlin;
     int ncol;
     int status;
+    struct lat_longjmp *error;
+} lat_mv;*/
+
+typedef struct lat_mv {
+    lat_global *global;
+    lat_frame *actual_frm;
+    lat_frame *final_frm;
+    lat_frame *base_frm;
+    lat_objeto **constantes;
+    lat_objeto *tope;
+    lat_objeto *base;
+    lat_objeto *pila_ultimo;
+    lat_objeto *pila;
+    lat_objeto *contexto[256];
+    lat_objeto *contexto_actual;
+    const lat_bytecode *tmp_pc;
+    size_t memoria_usada;
+    size_t gc_limite;
+    int ptrctx;
+    int ptrpila;
+    int ptrprevio;
+    int prev_args;
+    int numejec;
+    int nlin;
+    int ncol;
+    int status;
+    int size_frm;
+    char *nombre_archivo;
     struct lat_longjmp *error;
 } lat_mv;
 
@@ -176,4 +195,4 @@ lat_bytecode latMV_bytecode_crear(int i, int a, int b, void *meta,
                                   char *nombre_archivo);
 int latMV_funcion_correr(lat_mv *mv, lat_objeto *func);
 
-#endif //_LATINO_MV_H_
+#endif /* _LATINO_MV_H_ */

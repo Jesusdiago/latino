@@ -1,363 +1,11 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
-
-/*/#include "pcre.h"*/
 
 #include "latino.h"
 
 #define LIB_CADENA_NAME "cadena"
-
-static int oct(int octalNumber) {
-    int decimalNumber = 0, i = 0;
-    while (octalNumber != 0) {
-        decimalNumber += (octalNumber % 10) * pow(8, i);
-        ++i;
-        octalNumber /= 10;
-    }
-    i = 1;
-    return decimalNumber;
-}
-
-char *analizar_fmt(const char *s, size_t len) {
-    char *ret = malloc(len + 1);
-    int i = 0, j = 0, let = 0, c = 48;
-    for (i = 0; i < ((int)len); i++) {
-        switch (s[i]) {
-            case '\\': {
-                switch (s[i + 1]) {
-                    case '/':
-                        c = '/';
-                        i++;
-                        goto save;
-                    case '"':
-                        c = '\"';
-                        i++;
-                        goto save;
-                    case 'a':
-                        c = '\a';
-                        i++;
-                        goto save;
-                    case 'b':
-                        c = '\b';
-                        i++;
-                        goto save;
-                    case 'f':
-                        c = '\f';
-                        i++;
-                        goto save;
-                    case 'n':
-                        c = '\n';
-                        i++;
-                        goto save;
-                    case 'r':
-                        c = '\r';
-                        i++;
-                        goto save;
-                    case 't':
-                        c = '\t';
-                        i++;
-                        goto save;
-                    case 'v':
-                        c = '\v';
-                        i++;
-                        goto save;
-                    case '\\':
-                        c = '\\';
-                        i++;
-                        goto save;
-                    case 'u':
-                        c = s[i];
-                        ret[j] = c;
-                        j++;
-                        i++;
-                        int k;
-                        for (k = 0; k <= 4; k++) {
-                            c = s[i];
-                            ret[j] = c;
-                            j++;
-                            i++;
-                        }
-                    default:
-                        if
-                            isdigit(s[i + 1]) {
-                                while (isdigit(s[i + 1])) {
-                                    let = (10 * let) + ((int)s[i + 1] - 48);
-                                    i += 1;
-                                };
-                                c = oct(let);
-                                let = 0;
-                                goto save;
-                            }
-                        else {
-                            c = s[i];
-                            break;
-                        }
-                }
-            } break;
-            default:
-                c = s[i];
-                break;
-        }
-    save:
-        ret[j] = c;
-        j++;
-    }
-    ret[j] = '\0';
-    return ret;
-}
-
-char *analizar(const char *s, size_t len) {
-    char *ret = malloc(len + 1);
-    int i = 0;
-    int j = 0;
-    int c = '@';
-    for (i = 0; i < ((int)len); i++) {
-        switch (s[i]) {
-            case '\\': {
-                switch (s[i + 1]) {
-                    case '\\':
-                        c = '\\';
-                        i++;
-                        ret[j] = c;
-                        j++;
-                        c = '\\';
-                        i++;
-                        ret[j] = c;
-                        j++;
-                    case 'u':
-                        c = s[i];
-                        ret[j] = c;
-                        j++;
-                        i++;
-                        int k;
-                        for (k = 0; k <= 4; k++) {
-                            c = s[i];
-                            ret[j] = c;
-                            j++;
-                            i++;
-                        }
-                    default:
-                        c = s[i];
-                        break;
-                }
-            } break;
-            default:
-                c = s[i];
-                break;
-        }
-        ret[j] = c;
-        j++;
-    }
-    ret[j] = '\0';
-    // printf("ret: %s\n", ret);
-    return ret;
-}
-
-char *decimal_acadena(double d) {
-    char *buffer = calloc(1, 64);
-    snprintf(buffer, 64, LAT_NUMERIC_FMT, d);
-    return buffer;
-}
-
-char *logico_acadena(int i) {
-    char *buffer = malloc(10);
-    if (i)
-        snprintf(buffer, 10, "%s", "verdadero");
-    else
-        snprintf(buffer, 10, "%s", "falso");
-    buffer[9] = '\0';
-    return buffer;
-}
-
-bool inicia_con(const char *base, const char *str) {
-    return (strstr(base, str) - base) == 0;
-}
-
-bool termina_con(char *base, char *str) {
-    int blen = strlen(base);
-    int slen = strlen(str);
-    return (blen >= slen) && (!strcmp(base + blen - slen, str));
-}
-
-int intercambiar_pos(char *base, char *str, int startIndex) {
-    int result;
-    int baselen = strlen(base);
-    if ((int)strlen(str) > baselen || startIndex > baselen) {
-        result = -1;
-    } else {
-        if (startIndex < 0) {
-            startIndex = 0;
-        }
-        char *pos = strstr(base + startIndex, str);
-        if (pos == NULL) {
-            result = -1;
-        } else {
-            result = pos - base;
-        }
-    }
-    return result;
-}
-
-int pos(char *base, char *str) { return intercambiar_pos(base, str, 0); }
-
-int ultima_pos(char *base, char *str) {
-    int result;
-    if (strlen(str) > strlen(base)) {
-        result = -1;
-    } else {
-        int start = 0;
-        int endinit = strlen(base) - strlen(str);
-        int end = endinit;
-        int endtmp = endinit;
-        while (start != end) {
-            start = intercambiar_pos(base, str, start);
-            end = intercambiar_pos(base, str, end);
-            if (start == -1) {
-                end = -1;
-            } else if (end == -1) {
-                if (endtmp == (start + 1)) {
-                    end = start;
-                } else {
-                    end = endtmp - (endtmp - start) / 2;
-                    if (end <= start) {
-                        end = start + 1;
-                    }
-                    endtmp = end;
-                }
-            } else {
-                start = end;
-                end = endinit;
-            }
-        }
-        result = start;
-    }
-    return result;
-}
-
-char *insertar(char *dest, char *src, int pos) {
-    int srclen = strlen(src);
-    int dstlen = strlen(dest);
-    if (pos < 0) {
-        pos = dstlen + pos;
-    }
-    if (pos > dstlen) {
-        pos = dstlen;
-    }
-    char *m = malloc(srclen + dstlen + 1);
-    memcpy(m, dest, pos);
-    memcpy(m + pos, src, srclen);
-    memcpy(m + pos + srclen, dest + pos, dstlen - pos + 1);
-    return m;
-}
-
-char *rellenar_izquierda(char *base, char *c, int n) {
-    char *ret = malloc(MAX_STR_LENGTH);
-    int len = strlen(base);
-    int i, final = len - 1;
-    for (i = 0; i < (n - final); i++) {
-        ret = strcat(ret, c);
-    }
-    ret = strcat(ret, base);
-    return ret;
-}
-
-char *rellenar_derecha(char *base, char *c, int n) {
-    char *ret = malloc(MAX_STR_LENGTH);
-    int len = strlen(base);
-    strcpy(ret, base);
-    int i, final = len - 1;
-    for (i = 0; i < (n - final); i++) {
-        ret = strcat(ret, c);
-    }
-    return ret;
-}
-
-char *reemplazar(char *o_string, char *s_string, char *r_string) {
-    char *buffer = malloc(MAX_STR_LENGTH);
-    char *ch;
-    if (!(ch = strstr(o_string, s_string))) {
-        strcpy(buffer, o_string);
-        return buffer;
-    }
-    strncpy(buffer, o_string, ch - o_string);
-    buffer[ch - o_string] = 0;
-    sprintf(buffer + (ch - o_string), "%s%s", r_string, ch + strlen(s_string));
-    // printf("REEMPLAZAR: %s\n", buffer);
-    return buffer;
-}
-
-char *subcadena(const char *str, int beg, int n) {
-    char *ret = malloc(n + 1);
-    strncpy(ret, (str + beg), n);
-    *(ret + n) = 0;
-    return ret;
-}
-
-char *minusculas(const char *str) {
-    int i = 0;
-    int len = strlen(str);
-    char *ret = malloc(len + 1);
-    for (i = 0; i < len; i++) {
-        ret[i] = tolower(str[i]);
-    }
-    ret[len] = 0;
-    return ret;
-}
-
-char *mayusculas(const char *str) {
-    int i = 0;
-    int len = strlen(str);
-    char *ret = malloc(len + 1);
-    for (i = 0; i < len; i++) {
-        ret[i] = toupper(str[i]);
-    }
-    ret[len] = 0;
-    return ret;
-}
-
-char *quitar_espacios(const char *str) {
-    char *start;
-    char *end;
-    for (start = (char *)str; *start; start++) {
-        if (!isspace((unsigned char)start[0]))
-            break;
-    }
-    for (end = start + strlen(start); end > start + 1; end--) {
-        if (!isspace((unsigned char)end[-1]))
-            break;
-    }
-    char *ret = malloc((end - start));
-    *end = 0;
-    if (start > str) {
-        memcpy(ret, start, (end - start) + 1);
-    } else {
-        memcpy(ret, str, strlen(str));
-    }
-    return ret;
-}
-
-lat_cadena *latO_cadenaNueva(lat_mv *mv, const char *str, size_t l);
 
 void str_concatenar(lat_mv *mv) {
     // printf("%s\n", "str_concatenar");
@@ -671,7 +319,6 @@ void str_separar(lat_mv *mv) {
 
 void str_invertir(lat_mv *mv) {
     // TODO: Pendiente implementacion para multibyte
-    // printf("%s\n", "latM_asignar");
     lat_objeto *a = latC_desapilar(mv);
     char *orig = latC_checar_cadena(mv, a);
     int i = strlen(orig) - 1;
@@ -806,7 +453,7 @@ void str_match(lat_mv *mv) {
         unsigned int offset = 0;
         lat_objeto *l_groups = latC_crear_lista(mv, latL_crear(mv));
         for (int g = 0; g < maxGroups; g++) {
-            if (groupArray[g].rm_so == (size_t)-1) {
+            if (groupArray[g].rm_so == -1) {
                 break; // No more groups
             }
             if (g == 0) {
@@ -923,7 +570,7 @@ void str_bytes(lat_mv *mv) {
     } else {
         char *stringp = latC_checar_cadena(mv, str);
         lat_objeto *decs = latC_crear_lista(mv, latL_crear(mv));
-        for (int i = 0; i < strlen(stringp); i++) {
+        for (unsigned long i = 0; i < strlen(stringp); i++) {
             latL_agregar(mv, latC_checar_lista(mv, decs),
                          latC_crear_numerico(mv, (int)stringp[i]));
         }
@@ -963,7 +610,7 @@ static const lat_CReg libstr[] = {
     {"reemplazar", str_reemplazar, 3},
     {"subcadena", str_subcadena, 3},
     {"formato", str_formato, FUNCION_VAR_ARGS}, // para funciones var_arg
-    {NULL, NULL}};
+    {NULL, NULL, 0}};
 
 void latC_abrir_liblatino_strlib(lat_mv *mv) {
     latC_abrir_liblatino(mv, LIB_CADENA_NAME, libstr);

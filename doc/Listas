@@ -2,7 +2,7 @@
 
 Una lista es un tipo de colección. Sería equivalente a lo que en otros lenguajes
 se conoce por arreglos o vectores.
-Las listas pueden contener cualquier tipo de dato: logico, entero, decimal,
+Las listas pueden contener cualquier tipo de dato: lógico, entero, decimal,
 literal, cadena, listas, diccionarios, tipos definidos por el usuario (clases)
 
 Crear una lista es tan sencillo como indicar entre corchetes y separados por comas

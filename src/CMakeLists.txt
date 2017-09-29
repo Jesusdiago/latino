@@ -33,11 +33,12 @@ ADD_SUBDIRECTORY(linenoise)
 INCLUDE_DIRECTORIES(linenoise)
 INCLUDE_DIRECTORIES(../include)
 
-SET(SRC_LIB latino.c latlex.c latparse.c latast.c latmem.c
-latdic.c latdo.c latlist.c latmv.c latobj.c latpaqlib.c latrepl.c latgc.c
+SET(SRC_LIB latcommon.c latino.c latlex.c latparse.c latast.c latmem.c
+latdic.c latdo.c latlist.c latmv.c latobj.c latgc.c
 #librerias
 latbaselib.c latstrlib.c latlistlib.c latdiclib.c latfilelib.c
-latmathlib.c latsyslib.c latpaqlib.c latdevlib.c
+latmathlib.c latsyslib.c latpaqlib.c
+#latdevlib.c
 #extra
 linenoise/utf8.c linenoise/linenoise.c)
 
@@ -79,6 +80,9 @@ IF(UNIX)
   INSTALL (FILES ../include/latmem.h DESTINATION ${INSTALL_INCLUDE} COMPONENT Header)
   INSTALL (FILES ../include/latmv.h DESTINATION ${INSTALL_INCLUDE} COMPONENT Header)
   INSTALL (FILES ../include/latobj.h DESTINATION ${INSTALL_INCLUDE} COMPONENT Header)
+  INSTALL (FILES ../include/latgc.h DESTINATION ${INSTALL_INCLUDE} COMPONENT Header)
+  INSTALL (FILES linenoise/utf8.h DESTINATION ${INSTALL_INCLUDE} COMPONENT Header)
+  INSTALL (FILES linenoise/linenoise.h DESTINATION ${INSTALL_INCLUDE} COMPONENT Header)
 ENDIF(UNIX)
 
 #crear paquete .deb https://cmake.org/Wiki/CMake/CPack/Examples/Linux/DEB
@@ -86,7 +90,7 @@ ENDIF(UNIX)
 #make package
 SET(CPACK_GENERATOR "DEB")
 SET(CPACK_DEBIAN_PACKAGE_NAME "latino")
-SET(CPACK_PACKAGE_VERSION "1.0.0")
+SET(CPACK_PACKAGE_VERSION "1.1.0")
 SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "primitivo.roman.montero@gmail.com")
 SET(CPACK_DEBIAN_PACKAGE_DESCRIPTION "Lenguaje de programación de código abierto para latinos y de habla hispana. http://lenguaje-latino.org/")
 SET(CPACK_DEBIAN_PACKAGE_SECTION "education")

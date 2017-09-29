@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #include "latino.h"
@@ -68,7 +49,7 @@ static void file_lineas(lat_mv *mv) {
         latC_error(mv, "No se pudo abrir el archivo '%s'", path);
     }
     lat_objeto *lineas = latC_crear_lista(mv, latL_crear(mv));
-    while ((len = file_leerlinea(&buf, &len, fp)) != -1) {
+    while ((len = file_leerlinea(&buf, &len, fp)) != (size_t)-1) {
         latL_agregar(mv, latC_checar_lista(mv, lineas),
                      latC_crear_cadena(mv, buf));
     }
@@ -83,7 +64,7 @@ static void file_leer(lat_mv *mv) {
         latC_apilar(mv, latO_falso);
         return;
     }
-    char * final;
+    char *final;
     size_t n = 0;
     int c;
     fseek(archivo, 0, SEEK_END);
@@ -196,7 +177,7 @@ static const lat_CReg libfile[] = {{"leer", file_leer, 1},
                                    {"eliminar", file_eliminar, 1},
                                    {"crear", file_crear, 1},
                                    {"renombrar", file_renombrar, 2},
-                                   {NULL, NULL}};
+                                   {NULL, NULL, 0}};
 
 void latC_abrir_liblatino_filelib(lat_mv *mv) {
     latC_abrir_liblatino(mv, LIB_ARCHIVO_NAME, libfile);

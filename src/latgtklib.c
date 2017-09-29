@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #include <gtk/gtk.h>
@@ -92,8 +73,7 @@ static void gtkboton_texto(lat_mv *mv) {
 static void gtkagregar(lat_mv *mv) {
     lat_objeto *b = latC_desapilar(mv);
     lat_objeto *a = latC_desapilar(mv);
-    gtk_container_add(GTK_CONTAINER(latC_checar_cptr(a)),
-                      latC_checar_cptr(b));
+    gtk_container_add(GTK_CONTAINER(latC_checar_cptr(a)), latC_checar_cptr(b));
 }
 
 static void gtkboton_destruir(lat_mv *mv) {
@@ -122,7 +102,7 @@ static const lat_CReg libgtk[] = {{"iniciar", gtkiniciar, 0},
                                   {"botonTexto", gtkboton_texto, 3},
                                   {"botonDestruir", gtkboton_destruir, 2},
                                   {"llamarFuncion", gtkllamar_funcion, 2},
-                                  {NULL, NULL}};
+                                  {NULL, NULL, 0}};
 
 void latC_abrir_liblatino_gtklib(lat_mv *mv) {
     latC_abrir_liblatino(mv, LIB_GTK_NAME, libgtk);

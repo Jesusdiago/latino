@@ -1,25 +1,6 @@
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+Vea LICENSE.txt
  */
 
 #include <stdlib.h>
@@ -34,16 +15,9 @@ THE SOFTWARE.
 #include "latmem.h"
 #include "latobj.h"
 
-lat_objeto latO_nulo_ = {{NULL}, T_NULL};
+lat_objeto latO_nulo_ = {.val = {NULL}, .tipo = T_NULL};
 lat_objeto latO_verdadero_ = {.val.logico = 1, .tipo = T_BOOL};
 lat_objeto latO_falso_ = {.val.logico = 0, T_BOOL};
-
-char *minusculas(const char *str);
-char *logico_acadena(int i);
-char *decimal_acadena(double d);
-char *reemplazar(char *str, const char *orig, const char *rep);
-char *analizar_fmt(const char *s, size_t len);
-char *analizar(const char *s, size_t len);
 
 void latO_asignar_ctx(lat_mv *mv, lat_objeto *ns, const char *name,
                       lat_objeto *o) {
@@ -112,7 +86,7 @@ static lat_cadena *nuevaCad(lat_mv *mv, const char *str, size_t l,
     ts->tsv.next = tb->hash[h];
     tb->hash[h] = (lat_gcobjeto *)ts;
     tb->nuse++;
-    if (tb->nuse > tb->size && tb->size <= INT_MAX / 2) {
+    if ((int)tb->nuse > tb->size && tb->size <= INT_MAX / 2) {
         latS_resize(mv, tb->size * 2);
     }
     return ts;
@@ -519,15 +493,6 @@ void latS_resize(lat_mv *mv, int newsize) {
     latM_liberar(mv, tb->hash);
     tb->size = newsize;
     tb->hash = newhash;
-}
-
-LATINO_API lat_objeto *latC_crear_logico(lat_mv *mv, bool val) {
-    // printf("lat_logico_crear: %i\n", val);
-    lat_objeto *ret = latO_crear(mv);
-    ret->tipo = T_BOOL;
-    ret->tam += sizeof(bool);
-    getLogico(ret) = val;
-    return ret;
 }
 
 LATINO_API lat_objeto *latC_crear_numerico(lat_mv *mv, double val) {

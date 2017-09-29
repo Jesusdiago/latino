@@ -6,7 +6,7 @@ un lenguaje de alto nivel y si es correcto lo ejecuta directamente en el lenguaj
 de la máquina en que se está ejecutando el intérprete.
 
 ## Ventajas de los intérpretes
-__Fexibilidad:__ los lenguajes interpretativos suelen ser más flexibles y permiten
+__Fexibilidad:__ los lenguajes interpretados suelen ser más flexibles y permiten
 realizar acciones más complejas a menudo imposibles o muy difíciles de procesar
 para un compilador.
 

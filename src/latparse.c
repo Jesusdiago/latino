@@ -67,27 +67,8 @@
 
 /*
 The MIT License (MIT)
-
-Copyright (c) Latino - Lenguaje de Programacion
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-*/
+Vea LICENSE.txt
+ */
 
 /* bison -y -oparse.c parse.y */
 #define YYERROR_VERBOSE 1
@@ -110,7 +91,7 @@ int yyerror(struct YYLTYPE *yylloc_param, void *scanner, struct ast **root, cons
 int yylex (YYSTYPE * yylval_param,YYLTYPE * yylloc_param ,yyscan_t yyscanner);
 
 
-#line 114 "latparse.c" /* yacc.c:339  */
+#line 95 "latparse.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -257,7 +238,7 @@ int yyparse (ast **root, void *scanner);
 
 /* Copy the second part of user declarations.  */
 
-#line 261 "latparse.c" /* yacc.c:358  */
+#line 242 "latparse.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -560,18 +541,18 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   140,   140,   141,   145,   146,   147,   148,   152,   156,
-     163,   167,   171,   175,   182,   186,   193,   194,   195,   196,
-     200,   201,   202,   206,   210,   214,   218,   222,   226,   227,
-     228,   229,   230,   231,   232,   233,   234,   235,   236,   237,
-     238,   239,   240,   241,   242,   243,   244,   245,   249,   252,
-     256,   261,   266,   270,   271,   272,   273,   274,   275,   276,
-     277,   281,   282,   286,   287,   288,   292,   293,   297,   300,
-     306,   307,   309,   311,   313,   315,   317,   319,   320,   324,
-     327,   330,   337,   344,   350,   352,   354,   356,   362,   363,
-     367,   370,   373,   379,   381,   383,   389,   390,   394,   400,
-     406,   410,   411,   412,   422,   423,   424,   425,   431,   435,
-     439,   440,   441,   451,   455,   456,   457,   461,   462
+       0,   116,   116,   119,   123,   124,   128,   129,   130,   131,
+     135,   139,   146,   150,   154,   158,   165,   169,   176,   177,
+     178,   179,   183,   184,   185,   189,   193,   197,   201,   205,
+     209,   210,   211,   212,   213,   214,   215,   216,   217,   218,
+     219,   220,   221,   222,   223,   224,   225,   226,   227,   228,
+     232,   237,   242,   246,   247,   248,   249,   250,   251,   252,
+     253,   257,   258,   262,   263,   264,   268,   269,   273,   276,
+     282,   283,   285,   287,   289,   291,   293,   295,   296,   300,
+     303,   306,   313,   320,   326,   328,   330,   332,   338,   339,
+     343,   346,   349,   355,   357,   359,   365,   366,   370,   376,
+     382,   386,   387,   388,   398,   399,   400,   401,   407,   411,
+     415,   416,   417,   427,   431,   432,   433,   437,   438
 };
 #endif
 
@@ -589,12 +570,12 @@ static const char *const yytname[] =
   "CONCATENAR_IGUAL", "MAS_IGUAL", "MENOS_IGUAL", "POR_IGUAL",
   "ENTRE_IGUAL", "MODULO_IGUAL", "REGEX", "GLOBAL", "'='", "'+'", "'-'",
   "'*'", "'/'", "'%'", "'!'", "'^'", "'?'", "':'", "'('", "')'", "'['",
-  "']'", "';'", "','", "'{'", "'}'", "$accept", "constant_expression",
-  "primary_expression", "unary_expression", "multiplicative_expression",
-  "additive_expression", "relational_expression", "equality_expression",
-  "logical_not_expression", "logical_and_expression",
-  "logical_or_expression", "ternary_expression", "concat_expression",
-  "expression", "program", "statement_list", "statement",
+  "']'", "';'", "','", "'{'", "'}'", "$accept", "program",
+  "constant_expression", "primary_expression", "unary_expression",
+  "multiplicative_expression", "additive_expression",
+  "relational_expression", "equality_expression", "logical_not_expression",
+  "logical_and_expression", "logical_or_expression", "ternary_expression",
+  "concat_expression", "expression", "statement_list", "statement",
   "incdec_statement", "variable_access", "field_designator",
   "global_declaration", "declaration", "labeled_statements",
   "labeled_statement_case", "labeled_statement_default",
@@ -665,25 +646,25 @@ static const yytype_int16 yypact[] =
 static const yytype_uint8 yydefact[] =
 {
        0,     0,    63,   106,     0,     0,     0,     0,     0,   101,
-       0,   104,     0,    49,     0,    60,     0,    64,    54,    53,
-      55,    56,    57,    58,    59,     0,    52,     2,     3,     4,
-      47,     0,     5,     6,     7,     0,     0,     0,     0,   110,
-     114,    29,    30,    31,    32,    33,    34,    35,    36,    37,
-      38,    45,    39,     0,    46,    43,    44,    40,    41,    42,
+       0,   104,     0,     3,     0,    60,     0,    64,    54,    53,
+      55,    56,    57,    58,    59,     0,    52,     4,     5,     6,
+      49,     0,     7,     8,     9,     0,     0,     0,     0,   110,
+     114,    31,    32,    33,    34,    35,    36,    37,    38,    39,
+      40,    47,    41,     0,    48,    45,    46,    42,    43,    44,
        0,     0,     0,   104,    96,    97,     0,     0,    68,    69,
       65,     1,    50,     0,    61,    62,     0,     0,     0,     0,
-       0,     0,     0,   101,     0,   101,     0,   104,     9,     8,
-      23,     0,   111,     0,     0,     0,   115,     0,     0,     0,
+       0,     0,     0,   101,     0,   101,     0,   104,    11,    10,
+      25,     0,   111,     0,     0,     0,   115,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,   104,     0,
      101,     0,     0,     0,    80,    81,    66,    71,    72,    73,
       74,    75,    76,    70,   102,     0,     0,    77,   107,   108,
-     105,     0,    28,   110,   109,     0,   117,   113,    16,    17,
-      18,    19,    21,    20,    24,    25,    27,    22,    15,    14,
-      11,    12,    13,    10,     0,     0,    84,     0,     0,    88,
+     105,     0,    30,   110,   109,     0,   117,   113,    18,    19,
+      20,    21,    23,    22,    26,    27,    29,    24,    17,    16,
+      13,    14,    15,    12,     0,     0,    84,     0,     0,    88,
        0,    93,    94,     0,     0,   103,     0,     0,    87,    79,
      100,    67,     0,   112,   118,   116,     0,     0,     0,    86,
-      89,    67,     0,     0,     0,    83,     0,     0,    26,    90,
+      89,    67,     0,     0,     0,    83,     0,     0,    28,    90,
       85,     0,   104,    82,    78,    99,     0,    92,    98,     0,
       91,     0,     0,    95
 };
@@ -691,8 +672,8 @@ static const yytype_uint8 yydefact[] =
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -166,    43,  -166,  -166,  -166,  -166,  -166,  -166,  -166,  -166,
-    -166,  -166,  -166,   231,  -166,    38,   -27,    32,     0,  -166,
+    -166,  -166,    43,  -166,  -166,  -166,  -166,  -166,  -166,  -166,
+    -166,  -166,  -166,  -166,   231,    38,   -27,    32,     0,  -166,
     -166,    -9,    54,  -166,  -166,  -166,   -20,  -165,  -166,  -166,
      169,  -166,    16,   -75,   -78,  -166,    46,  -166,  -166,    35
 };
@@ -700,8 +681,8 @@ static const yytype_int16 yypgoto[] =
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int16 yydefgoto[] =
 {
-      -1,    41,    42,    43,    44,    45,    46,    47,    48,    49,
-      50,    51,    52,   134,    12,    13,    14,    54,    55,    17,
+      -1,    12,    41,    42,    43,    44,    45,    46,    47,    48,
+      49,    50,    51,    52,   134,    13,    14,    54,    55,    17,
       18,    19,   123,   124,   125,    20,   168,   169,    21,    22,
       23,    56,    57,    65,    25,    58,    93,    59,    95,    96
 };
@@ -722,7 +703,7 @@ static const yytype_int16 yytable[] =
      138,   139,    83,   126,   115,    15,   140,     3,    83,   144,
       84,   114,    15,   171,   -51,     1,   112,   113,   116,     2,
        3,     4,   -51,   -51,   -51,     5,     6,   -65,   174,   -51,
-       7,     8,     9,    10,   -51,   -51,   -48,     1,   177,   -65,
+       7,     8,     9,    10,   -51,   -51,    -2,     1,   177,   -65,
      -65,     2,     3,     4,    27,    28,   178,     5,     6,   121,
      122,   194,     7,     8,     9,    10,   165,   189,    11,  -104,
      -65,     1,   -65,   180,   113,     2,     3,     4,   196,   211,
@@ -872,37 +853,37 @@ static const yytype_int16 yycheck[] =
 static const yytype_uint8 yystos[] =
 {
        0,     1,     5,     6,     7,    11,    12,    16,    17,    18,
-      19,    44,    77,    78,    79,    80,    81,    82,    83,    84,
+      19,    44,    64,    78,    79,    80,    81,    82,    83,    84,
       88,    91,    92,    93,    95,    97,    78,     3,     4,     5,
        6,    16,    23,    24,    25,    46,    47,    51,    55,    57,
-      61,    64,    65,    66,    67,    68,    69,    70,    71,    72,
-      73,    74,    75,    76,    80,    81,    94,    95,    98,   100,
-      76,    78,     5,    55,    76,    96,    76,    81,    84,    93,
+      61,    65,    66,    67,    68,    69,    70,    71,    72,    73,
+      74,    75,    76,    77,    80,    81,    94,    95,    98,   100,
+      77,    78,     5,    55,    77,    96,    77,    81,    84,    93,
       95,     0,    78,    22,    34,    35,    37,    38,    39,    40,
-      41,    42,    45,    55,    57,    45,    60,    55,    76,    76,
-      76,    76,    76,    99,    76,   101,   102,    26,    27,    28,
+      41,    42,    45,    55,    57,    45,    60,    55,    77,    77,
+      77,    77,    77,    99,    77,   101,   102,    26,    27,    28,
       29,    30,    31,    32,    33,    36,    43,    46,    47,    48,
       49,    50,    52,    53,    78,    57,    78,    15,    55,    84,
-      60,    20,    21,    85,    86,    87,     5,    76,    76,    76,
-      76,    76,    76,    76,    76,    96,    76,    96,     5,     6,
-       5,    97,    56,    60,    58,    54,    60,    62,    76,    76,
-      76,    76,    76,    76,    76,    76,    76,    76,    76,    76,
-      76,    76,    76,    76,    76,     8,     9,    10,    89,    90,
-      76,     9,    76,    97,    59,    96,    64,    54,     9,    85,
-      56,    58,    56,    99,    76,   102,    54,    76,    78,     9,
-      90,    58,    56,    76,    54,    78,    45,    78,    76,    78,
-       9,    78,    59,    78,    76,     9,    10,    89,     9,    79,
+      60,    20,    21,    85,    86,    87,     5,    77,    77,    77,
+      77,    77,    77,    77,    77,    96,    77,    96,     5,     6,
+       5,    97,    56,    60,    58,    54,    60,    62,    77,    77,
+      77,    77,    77,    77,    77,    77,    77,    77,    77,    77,
+      77,    77,    77,    77,    77,     8,     9,    10,    89,    90,
+      77,     9,    77,    97,    59,    96,    65,    54,     9,    85,
+      56,    58,    56,    99,    77,   102,    54,    77,    78,     9,
+      90,    58,    56,    77,    54,    78,    45,    78,    77,    78,
+       9,    78,    59,    78,    77,     9,    10,    89,     9,    79,
       78,    56,    78,     9
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    63,    64,    64,    65,    65,    65,    65,    66,    66,
-      67,    67,    67,    67,    68,    68,    69,    69,    69,    69,
-      70,    70,    70,    71,    72,    73,    74,    75,    76,    76,
-      76,    76,    76,    76,    76,    76,    76,    76,    76,    76,
-      76,    76,    76,    76,    76,    76,    76,    76,    77,    77,
+       0,    63,    64,    64,    65,    65,    66,    66,    66,    66,
+      67,    67,    68,    68,    68,    68,    69,    69,    70,    70,
+      70,    70,    71,    71,    71,    72,    73,    74,    75,    76,
+      77,    77,    77,    77,    77,    77,    77,    77,    77,    77,
+      77,    77,    77,    77,    77,    77,    77,    77,    77,    77,
       78,    78,    78,    79,    79,    79,    79,    79,    79,    79,
       79,    80,    80,    81,    81,    81,    82,    82,    83,    83,
       84,    84,    84,    84,    84,    84,    84,    84,    84,    85,
@@ -915,11 +896,11 @@ static const yytype_uint8 yyr1[] =
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     1,     1,     1,     1,     1,     2,     2,
-       3,     3,     3,     3,     3,     3,     3,     3,     3,     3,
-       3,     3,     3,     2,     3,     3,     5,     3,     3,     1,
+       0,     2,     0,     1,     1,     1,     1,     1,     1,     1,
+       2,     2,     3,     3,     3,     3,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     2,     3,     3,     5,     3,
+       3,     1,     1,     1,     1,     1,     1,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,     0,     1,
        2,     1,     2,     1,     1,     1,     1,     1,     1,     1,
        1,     2,     2,     1,     1,     1,     3,     4,     2,     2,
        3,     3,     3,     3,     3,     3,     3,     3,     6,     2,
@@ -1705,482 +1686,482 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 5:
-#line 146 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_logico(1, (yylsp[0]).first_line, (yylsp[0]).first_column);}
-#line 1712 "latparse.c" /* yacc.c:1646  */
+        case 2:
+#line 116 "latparse.y" /* yacc.c:1646  */
+    { /* empty */
+        *root = NULL;
+    }
+#line 1695 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 6:
-#line 147 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_logico(0, (yylsp[0]).first_line, (yylsp[0]).first_column);}
-#line 1718 "latparse.c" /* yacc.c:1646  */
+  case 3:
+#line 119 "latparse.y" /* yacc.c:1646  */
+    { *root = (yyvsp[0].node); }
+#line 1701 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 148 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nulo(NULL, (yylsp[0]).first_line, (yylsp[0]).first_column);}
-#line 1724 "latparse.c" /* yacc.c:1646  */
+#line 129 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_logico(1, (yylsp[0]).first_line, (yylsp[0]).first_column);}
+#line 1707 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 152 "latparse.y" /* yacc.c:1646  */
+#line 130 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_logico(0, (yylsp[0]).first_line, (yylsp[0]).first_column);}
+#line 1713 "latparse.c" /* yacc.c:1646  */
+    break;
+
+  case 9:
+#line 131 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nulo(NULL, (yylsp[0]).first_line, (yylsp[0]).first_column);}
+#line 1719 "latparse.c" /* yacc.c:1646  */
+    break;
+
+  case 10:
+#line 135 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_MENOS_UNARIO, (yyvsp[0].node), NULL, (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1733 "latparse.c" /* yacc.c:1646  */
+#line 1728 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 9:
-#line 156 "latparse.y" /* yacc.c:1646  */
+  case 11:
+#line 139 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_MAS_UNARIO, (yyvsp[0].node), NULL, (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1742 "latparse.c" /* yacc.c:1646  */
+#line 1737 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 10:
-#line 163 "latparse.y" /* yacc.c:1646  */
+  case 12:
+#line 146 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_POTENCIA, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1751 "latparse.c" /* yacc.c:1646  */
+#line 1746 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 11:
-#line 167 "latparse.y" /* yacc.c:1646  */
+  case 13:
+#line 150 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_MULTIPLICACION, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1760 "latparse.c" /* yacc.c:1646  */
+#line 1755 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 12:
-#line 171 "latparse.y" /* yacc.c:1646  */
+  case 14:
+#line 154 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_DIVISION, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1769 "latparse.c" /* yacc.c:1646  */
+#line 1764 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 13:
-#line 175 "latparse.y" /* yacc.c:1646  */
+  case 15:
+#line 158 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_MODULO, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1778 "latparse.c" /* yacc.c:1646  */
+#line 1773 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 14:
-#line 182 "latparse.y" /* yacc.c:1646  */
+  case 16:
+#line 165 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_RESTA, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1787 "latparse.c" /* yacc.c:1646  */
+#line 1782 "latparse.c" /* yacc.c:1646  */
     break;
 
-  case 15:
-#line 186 "latparse.y" /* yacc.c:1646  */
+  case 17:
+#line 169 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_SUMA, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         if((yyval.node) == NULL) YYABORT;
     }
-#line 1796 "latparse.c" /* yacc.c:1646  */
-    break;
-
-  case 16:
-#line 193 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_MAYOR_QUE, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1802 "latparse.c" /* yacc.c:1646  */
-    break;
-
-  case 17:
-#line 194 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_MENOR_QUE, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1808 "latparse.c" /* yacc.c:1646  */
+#line 1791 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 195 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_MAYOR_IGUAL, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1814 "latparse.c" /* yacc.c:1646  */
+#line 176 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_MAYOR_QUE, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1797 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 196 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_MENOR_IGUAL, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1820 "latparse.c" /* yacc.c:1646  */
+#line 177 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_MENOR_QUE, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1803 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 200 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_DESIGUALDAD, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1826 "latparse.c" /* yacc.c:1646  */
+#line 178 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_MAYOR_IGUAL, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1809 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 201 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_IGUALDAD, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1832 "latparse.c" /* yacc.c:1646  */
+#line 179 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_MENOR_IGUAL, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1815 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 202 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_REGEX, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1838 "latparse.c" /* yacc.c:1646  */
+#line 183 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_DESIGUALDAD, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1821 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 206 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_NO, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 1844 "latparse.c" /* yacc.c:1646  */
+#line 184 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_IGUALDAD, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1827 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 210 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_Y, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1850 "latparse.c" /* yacc.c:1646  */
+#line 185 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_REGEX, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1833 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 214 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_O, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1856 "latparse.c" /* yacc.c:1646  */
+#line 189 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_NO, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
+#line 1839 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 218 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_si((yyvsp[-4].node), (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1862 "latparse.c" /* yacc.c:1646  */
+#line 193 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_Y, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1845 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 222 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_CONCATENAR, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1868 "latparse.c" /* yacc.c:1646  */
+#line 197 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_O, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1851 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 226 "latparse.y" /* yacc.c:1646  */
+#line 201 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_si((yyvsp[-4].node), (yyvsp[-2].node), (yyvsp[0].node)); }
+#line 1857 "latparse.c" /* yacc.c:1646  */
+    break;
+
+  case 29:
+#line 205 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_CONCATENAR, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
+#line 1863 "latparse.c" /* yacc.c:1646  */
+    break;
+
+  case 30:
+#line 209 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = (yyvsp[-1].node); }
-#line 1874 "latparse.c" /* yacc.c:1646  */
-    break;
-
-  case 47:
-#line 245 "latparse.y" /* yacc.c:1646  */
-    { (yyval.node) = latA_nodo(NODO_LOAD_VAR_ARGS , NULL, NULL, 0, 0); }
-#line 1880 "latparse.c" /* yacc.c:1646  */
-    break;
-
-  case 48:
-#line 249 "latparse.y" /* yacc.c:1646  */
-    { /* empty */
-        *root = NULL;
-    }
-#line 1888 "latparse.c" /* yacc.c:1646  */
+#line 1869 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 252 "latparse.y" /* yacc.c:1646  */
-    { *root = (yyvsp[0].node); }
-#line 1894 "latparse.c" /* yacc.c:1646  */
+#line 228 "latparse.y" /* yacc.c:1646  */
+    { (yyval.node) = latA_nodo(NODO_LOAD_VAR_ARGS , NULL, NULL, 0, 0); }
+#line 1875 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 256 "latparse.y" /* yacc.c:1646  */
+#line 232 "latparse.y" /* yacc.c:1646  */
     {
         if((yyvsp[0].node)){
             (yyval.node) = latA_nodo(NODO_BLOQUE, (yyvsp[-1].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
         }
     }
-#line 1904 "latparse.c" /* yacc.c:1646  */
+#line 1885 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 261 "latparse.y" /* yacc.c:1646  */
+#line 237 "latparse.y" /* yacc.c:1646  */
     {
         if((yyvsp[0].node)){
           (yyval.node) = latA_nodo(NODO_BLOQUE, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column);
         }
     }
-#line 1914 "latparse.c" /* yacc.c:1646  */
+#line 1895 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 266 "latparse.y" /* yacc.c:1646  */
+#line 242 "latparse.y" /* yacc.c:1646  */
     { yyerrok; yyclearin;}
-#line 1920 "latparse.c" /* yacc.c:1646  */
+#line 1901 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 281 "latparse.y" /* yacc.c:1646  */
+#line 257 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_INC, (yyvsp[-1].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 1926 "latparse.c" /* yacc.c:1646  */
+#line 1907 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 282 "latparse.y" /* yacc.c:1646  */
+#line 258 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_DEC, (yyvsp[-1].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 1932 "latparse.c" /* yacc.c:1646  */
+#line 1913 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 292 "latparse.y" /* yacc.c:1646  */
+#line 268 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_ATRIBUTO, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 1938 "latparse.c" /* yacc.c:1646  */
+#line 1919 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 293 "latparse.y" /* yacc.c:1646  */
+#line 269 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_LISTA_OBTENER_ELEMENTO, (yyvsp[-1].node), (yyvsp[-3].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 1944 "latparse.c" /* yacc.c:1646  */
+#line 1925 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 297 "latparse.y" /* yacc.c:1646  */
+#line 273 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_GLOBAL, (yyvsp[0].node), NULL, (yylsp[-1]).first_line, (yylsp[-1]).first_column);
     }
-#line 1952 "latparse.c" /* yacc.c:1646  */
+#line 1933 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 300 "latparse.y" /* yacc.c:1646  */
+#line 276 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_GLOBAL, (yyvsp[0].node), NULL, (yylsp[-1]).first_line, (yylsp[-1]).first_column);
     }
-#line 1960 "latparse.c" /* yacc.c:1646  */
+#line 1941 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 306 "latparse.y" /* yacc.c:1646  */
+#line 282 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign((yyvsp[0].node), (yyvsp[-2].node)); }
-#line 1966 "latparse.c" /* yacc.c:1646  */
+#line 1947 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 307 "latparse.y" /* yacc.c:1646  */
+#line 283 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign(
         (latA_nodo(NODO_CONCATENAR, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column)), (yyvsp[-2].node)); }
-#line 1973 "latparse.c" /* yacc.c:1646  */
+#line 1954 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 309 "latparse.y" /* yacc.c:1646  */
+#line 285 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign(
         (latA_nodo(NODO_SUMA, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column)), (yyvsp[-2].node)); }
-#line 1980 "latparse.c" /* yacc.c:1646  */
+#line 1961 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 311 "latparse.y" /* yacc.c:1646  */
+#line 287 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign(
         (latA_nodo(NODO_RESTA, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column)), (yyvsp[-2].node)); }
-#line 1987 "latparse.c" /* yacc.c:1646  */
+#line 1968 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 74:
-#line 313 "latparse.y" /* yacc.c:1646  */
+#line 289 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign(
         (latA_nodo(NODO_MULTIPLICACION, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column)), (yyvsp[-2].node)); }
-#line 1994 "latparse.c" /* yacc.c:1646  */
+#line 1975 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 75:
-#line 315 "latparse.y" /* yacc.c:1646  */
+#line 291 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign(
         (latA_nodo(NODO_DIVISION, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column)), (yyvsp[-2].node)); }
-#line 2001 "latparse.c" /* yacc.c:1646  */
+#line 1982 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 76:
-#line 317 "latparse.y" /* yacc.c:1646  */
+#line 293 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign(
         (latA_nodo(NODO_MODULO, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column)), (yyvsp[-2].node)); }
-#line 2008 "latparse.c" /* yacc.c:1646  */
+#line 1989 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 77:
-#line 319 "latparse.y" /* yacc.c:1646  */
+#line 295 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign((yyvsp[0].node), (yyvsp[-2].node)); }
-#line 2014 "latparse.c" /* yacc.c:1646  */
+#line 1995 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 78:
-#line 320 "latparse.y" /* yacc.c:1646  */
+#line 296 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_asign_le((yyvsp[0].node), (yyvsp[-5].node), (yyvsp[-3].node)); }
-#line 2020 "latparse.c" /* yacc.c:1646  */
+#line 2001 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 79:
-#line 324 "latparse.y" /* yacc.c:1646  */
+#line 300 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_CASOS, (yyvsp[-1].node), (yyvsp[0].node), (yylsp[-1]).first_line, (yylsp[-1]).first_column);
     }
-#line 2028 "latparse.c" /* yacc.c:1646  */
+#line 2009 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 80:
-#line 327 "latparse.y" /* yacc.c:1646  */
+#line 303 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_CASOS, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column);
     }
-#line 2036 "latparse.c" /* yacc.c:1646  */
+#line 2017 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 81:
-#line 330 "latparse.y" /* yacc.c:1646  */
+#line 306 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_CASOS, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column);
     }
-#line 2044 "latparse.c" /* yacc.c:1646  */
+#line 2025 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 337 "latparse.y" /* yacc.c:1646  */
+#line 313 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_CASO, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-3]).first_line, (yylsp[-3]).first_column);
     }
-#line 2052 "latparse.c" /* yacc.c:1646  */
+#line 2033 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 83:
-#line 344 "latparse.y" /* yacc.c:1646  */
+#line 320 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_DEFECTO, NULL, (yyvsp[0].node), (yylsp[-2]).first_line, (yylsp[-2]).first_column);
     }
-#line 2060 "latparse.c" /* yacc.c:1646  */
+#line 2041 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 84:
-#line 350 "latparse.y" /* yacc.c:1646  */
+#line 326 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_si((yyvsp[-2].node), (yyvsp[-1].node), NULL); }
-#line 2067 "latparse.c" /* yacc.c:1646  */
+#line 2048 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 85:
-#line 352 "latparse.y" /* yacc.c:1646  */
+#line 328 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_si((yyvsp[-4].node), (yyvsp[-3].node), (yyvsp[-1].node)); }
-#line 2074 "latparse.c" /* yacc.c:1646  */
+#line 2055 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 86:
-#line 354 "latparse.y" /* yacc.c:1646  */
+#line 330 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_si((yyvsp[-3].node), (yyvsp[-2].node), (yyvsp[-1].node)); }
-#line 2081 "latparse.c" /* yacc.c:1646  */
+#line 2062 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 87:
-#line 356 "latparse.y" /* yacc.c:1646  */
+#line 332 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_nodo(NODO_ELEGIR, (yyvsp[-2].node), (yyvsp[-1].node), (yylsp[-3]).first_line, (yylsp[-3]).first_column);
     }
-#line 2089 "latparse.c" /* yacc.c:1646  */
+#line 2070 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 90:
-#line 367 "latparse.y" /* yacc.c:1646  */
+#line 343 "latparse.y" /* yacc.c:1646  */
     {
           (yyval.node) = latA_si((yyvsp[-1].node), (yyvsp[0].node), NULL);
     }
-#line 2097 "latparse.c" /* yacc.c:1646  */
+#line 2078 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 91:
-#line 370 "latparse.y" /* yacc.c:1646  */
+#line 346 "latparse.y" /* yacc.c:1646  */
     {
           (yyval.node) = latA_si((yyvsp[-3].node), (yyvsp[-2].node), (yyvsp[0].node));
     }
-#line 2105 "latparse.c" /* yacc.c:1646  */
+#line 2086 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 92:
-#line 373 "latparse.y" /* yacc.c:1646  */
+#line 349 "latparse.y" /* yacc.c:1646  */
     {
           (yyval.node) = latA_si((yyvsp[-2].node), (yyvsp[-1].node), (yyvsp[0].node));
     }
-#line 2113 "latparse.c" /* yacc.c:1646  */
+#line 2094 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 93:
-#line 379 "latparse.y" /* yacc.c:1646  */
+#line 355 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_mientras((yyvsp[-2].node), (yyvsp[-1].node)); }
-#line 2120 "latparse.c" /* yacc.c:1646  */
+#line 2101 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 94:
-#line 381 "latparse.y" /* yacc.c:1646  */
+#line 357 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_hacer((yyvsp[0].node), (yyvsp[-2].node)); }
-#line 2127 "latparse.c" /* yacc.c:1646  */
+#line 2108 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 95:
-#line 384 "latparse.y" /* yacc.c:1646  */
+#line 360 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_desde((yyvsp[-7].node), (yyvsp[-5].node), (yyvsp[-3].node), (yyvsp[-1].node)); }
-#line 2134 "latparse.c" /* yacc.c:1646  */
+#line 2115 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 96:
-#line 389 "latparse.y" /* yacc.c:1646  */
+#line 365 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_RETORNO, (yyvsp[0].node), NULL, (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 2140 "latparse.c" /* yacc.c:1646  */
+#line 2121 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 97:
-#line 390 "latparse.y" /* yacc.c:1646  */
+#line 366 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_RETORNO, (yyvsp[0].node), NULL, (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 2146 "latparse.c" /* yacc.c:1646  */
+#line 2127 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 98:
-#line 394 "latparse.y" /* yacc.c:1646  */
+#line 370 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_funcion((yyvsp[-5].node), (yyvsp[-3].node), (yyvsp[-1].node), (yylsp[-5]).first_line, (yylsp[-5]).first_column);
     }
-#line 2154 "latparse.c" /* yacc.c:1646  */
+#line 2135 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 99:
-#line 400 "latparse.y" /* yacc.c:1646  */
+#line 376 "latparse.y" /* yacc.c:1646  */
     {
         (yyval.node) = latA_funcion(latA_var("anonima", (yylsp[-5]).first_line, (yylsp[-5]).first_column, false), (yyvsp[-3].node), (yyvsp[-1].node), (yylsp[-5]).first_line, (yylsp[-5]).first_column);
     }
-#line 2162 "latparse.c" /* yacc.c:1646  */
+#line 2143 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 100:
-#line 406 "latparse.y" /* yacc.c:1646  */
+#line 382 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_FUNCION_LLAMADA, (yyvsp[-3].node), (yyvsp[-1].node), (yylsp[-3]).first_line, (yylsp[-3]).first_column); }
-#line 2168 "latparse.c" /* yacc.c:1646  */
+#line 2149 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 101:
-#line 410 "latparse.y" /* yacc.c:1646  */
+#line 386 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = NULL; }
-#line 2174 "latparse.c" /* yacc.c:1646  */
+#line 2155 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 102:
-#line 411 "latparse.y" /* yacc.c:1646  */
+#line 387 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_FUNCION_ARGUMENTOS, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 2180 "latparse.c" /* yacc.c:1646  */
+#line 2161 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 103:
-#line 412 "latparse.y" /* yacc.c:1646  */
+#line 388 "latparse.y" /* yacc.c:1646  */
     {
         if((yyvsp[-2].node)->tipo == NODO_VAR_ARGS){
             printf("\033[1;31m%s:%d:%d:\033[0m %s\n", filename, (yylsp[-2]).first_line, (yylsp[-2]).first_column, "Parametro VAR_ARGS (...) debe de ser el ultimo parametro");
@@ -2188,64 +2169,64 @@ yyreduce:
         }
         (yyval.node) = latA_nodo(NODO_FUNCION_ARGUMENTOS, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-2]).first_line, (yylsp[-2]).first_column);
     }
-#line 2192 "latparse.c" /* yacc.c:1646  */
+#line 2173 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 104:
-#line 422 "latparse.y" /* yacc.c:1646  */
+#line 398 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = NULL; }
-#line 2198 "latparse.c" /* yacc.c:1646  */
+#line 2179 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 105:
-#line 423 "latparse.y" /* yacc.c:1646  */
+#line 399 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_FUNCION_PARAMETROS, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 2204 "latparse.c" /* yacc.c:1646  */
+#line 2185 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 106:
-#line 424 "latparse.y" /* yacc.c:1646  */
+#line 400 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_FUNCION_PARAMETROS, (yyvsp[0].node), NULL, 0, 0); }
-#line 2210 "latparse.c" /* yacc.c:1646  */
+#line 2191 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 107:
-#line 425 "latparse.y" /* yacc.c:1646  */
+#line 401 "latparse.y" /* yacc.c:1646  */
     {
         if((yyvsp[-2].node)->izq->tipo == NODO_VAR_ARGS){
             printf("\033[1;31m%s:%d:%d:\033[0m %s\n", (yylsp[0]).file_name, (yylsp[0]).first_line, (yylsp[0]).first_column, "Parametro VAR_ARGS (...) debe de ser el ultimo parametro");
             YYABORT;
         }
         (yyval.node) = latA_nodo(NODO_FUNCION_PARAMETROS, (yyvsp[0].node), (yyvsp[-2].node), (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 2221 "latparse.c" /* yacc.c:1646  */
+#line 2202 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 108:
-#line 431 "latparse.y" /* yacc.c:1646  */
+#line 407 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_FUNCION_PARAMETROS, (yyvsp[0].node), (yyvsp[-2].node), 0, 0); }
-#line 2227 "latparse.c" /* yacc.c:1646  */
+#line 2208 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 109:
-#line 435 "latparse.y" /* yacc.c:1646  */
+#line 411 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_LISTA, (yyvsp[-1].node), NULL, (yylsp[-2]).first_line, (yylsp[-2]).first_column); }
-#line 2233 "latparse.c" /* yacc.c:1646  */
+#line 2214 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 110:
-#line 439 "latparse.y" /* yacc.c:1646  */
+#line 415 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = NULL; }
-#line 2239 "latparse.c" /* yacc.c:1646  */
+#line 2220 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 111:
-#line 440 "latparse.y" /* yacc.c:1646  */
+#line 416 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_LISTA_AGREGAR_ELEMENTO, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 2245 "latparse.c" /* yacc.c:1646  */
+#line 2226 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 112:
-#line 441 "latparse.y" /* yacc.c:1646  */
+#line 417 "latparse.y" /* yacc.c:1646  */
     {
         if((yyvsp[-2].node)->tipo == NODO_LOAD_VAR_ARGS){
             printf("\033[1;31m%s:%d:%d:\033[0m %s\n", filename, (yylsp[-2]).first_line, (yylsp[-2]).first_column, "Parametro VAR_ARGS (...) debe de ser el ultimo parametro");
@@ -2253,47 +2234,47 @@ yyreduce:
         }
         (yyval.node) = latA_nodo(NODO_LISTA_AGREGAR_ELEMENTO, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[0]).first_line, (yylsp[0]).first_column);
     }
-#line 2257 "latparse.c" /* yacc.c:1646  */
+#line 2238 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 113:
-#line 451 "latparse.y" /* yacc.c:1646  */
+#line 427 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_DICCIONARIO, (yyvsp[-1].node), NULL, (yylsp[-1]).first_line, (yylsp[-1]).first_column); }
-#line 2263 "latparse.c" /* yacc.c:1646  */
+#line 2244 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 114:
-#line 455 "latparse.y" /* yacc.c:1646  */
+#line 431 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = NULL; }
-#line 2269 "latparse.c" /* yacc.c:1646  */
+#line 2250 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 115:
-#line 456 "latparse.y" /* yacc.c:1646  */
+#line 432 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_DICC_AGREGAR_ELEMENTO, (yyvsp[0].node), NULL, (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 2275 "latparse.c" /* yacc.c:1646  */
+#line 2256 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 116:
-#line 457 "latparse.y" /* yacc.c:1646  */
+#line 433 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_DICC_AGREGAR_ELEMENTO, (yyvsp[0].node), (yyvsp[-2].node), (yylsp[0]).first_line, (yylsp[0]).first_column); }
-#line 2281 "latparse.c" /* yacc.c:1646  */
+#line 2262 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 117:
-#line 461 "latparse.y" /* yacc.c:1646  */
+#line 437 "latparse.y" /* yacc.c:1646  */
     { /* empty */ (yyval.node) = NULL; }
-#line 2287 "latparse.c" /* yacc.c:1646  */
+#line 2268 "latparse.c" /* yacc.c:1646  */
     break;
 
   case 118:
-#line 462 "latparse.y" /* yacc.c:1646  */
+#line 438 "latparse.y" /* yacc.c:1646  */
     { (yyval.node) = latA_nodo(NODO_DICC_ELEMENTO, (yyvsp[-2].node), (yyvsp[0].node), (yylsp[-2]).first_line, (yylsp[-2]).first_column); }
-#line 2293 "latparse.c" /* yacc.c:1646  */
+#line 2274 "latparse.c" /* yacc.c:1646  */
     break;
 
 
-#line 2297 "latparse.c" /* yacc.c:1646  */
+#line 2278 "latparse.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2528,7 +2509,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 465 "latparse.y" /* yacc.c:1906  */
+#line 441 "latparse.y" /* yacc.c:1906  */
 
 
 //se define para analisis sintactico (bison)
